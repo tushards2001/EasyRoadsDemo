@@ -1,24 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kqB-dc-sTR">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Arial.ttf">
+            <string>ArialMT</string>
+        </array>
+        <array key="Pattaya-Regular.ttf">
+            <string>Pattaya-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Intro Page View Controller-->
+        <scene sceneID="eYN-kH-Rps">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Uxw-go-elb" customClass="IntroPageViewController" customModule="EasyRoadsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="53r-KW-w5N"/>
+                    <connections>
+                        <segue destination="qPN-xy-lfY" kind="show" identifier="segue_map" id="vfQ-i4-4jy"/>
+                    </connections>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6R4-gT-7jU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="66" y="-167"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rTP-ET-bW3">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="kqB-dc-sTR" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9FN-iy-7Be">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Uxw-go-elb" kind="relationship" relationship="rootViewController" id="X6g-sP-Uyj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EZU-MD-kcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-766" y="-170"/>
+        </scene>
+        <!--Page1-->
+        <scene sceneID="leF-7b-Zfr">
+            <objects>
+                <viewController storyboardIdentifier="Page1" id="XyC-tq-t0t" customClass="Page1" customModule="EasyRoadsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zAh-A7-JTp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9s1-91-3rK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EasyRoads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sO0-6g-LAv">
+                                <rect key="frame" x="16" y="311.5" width="343" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="DJ1-6f-bON"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pattaya-Regular" family="Pattaya" pointSize="44"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simplifying Road Trips" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2d-gi-bHG">
+                                <rect key="frame" x="16" y="384" width="343" height="208"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="0.6013484589041096" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="easyroad_logo" translatesAutoresizingMaskIntoConstraints="NO" id="xQr-ap-fys">
+                                <rect key="frame" x="137.5" y="201.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4b5-TQ-jvM"/>
+                                    <constraint firstAttribute="width" constant="100" id="dDz-Qd-x32"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9s1-91-3rK" firstAttribute="bottom" secondItem="7Wt-Ao-TZM" secondAttribute="bottom" id="5f1-yL-jIr"/>
+                            <constraint firstItem="s2d-gi-bHG" firstAttribute="leading" secondItem="7Wt-Ao-TZM" secondAttribute="leading" constant="16" id="JuP-eW-zfT"/>
+                            <constraint firstItem="s2d-gi-bHG" firstAttribute="top" secondItem="sO0-6g-LAv" secondAttribute="bottom" constant="8.5" id="KYb-i8-6gx"/>
+                            <constraint firstItem="9s1-91-3rK" firstAttribute="leading" secondItem="7Wt-Ao-TZM" secondAttribute="leading" id="N4A-xE-Cu1"/>
+                            <constraint firstItem="7Wt-Ao-TZM" firstAttribute="trailing" secondItem="s2d-gi-bHG" secondAttribute="trailing" constant="16" id="QJ4-kY-YBZ"/>
+                            <constraint firstItem="sO0-6g-LAv" firstAttribute="top" secondItem="xQr-ap-fys" secondAttribute="bottom" constant="10" id="Vfz-Nk-9Ui"/>
+                            <constraint firstItem="xQr-ap-fys" firstAttribute="centerX" secondItem="7Wt-Ao-TZM" secondAttribute="centerX" id="Y9p-jc-TAO"/>
+                            <constraint firstItem="7Wt-Ao-TZM" firstAttribute="trailing" secondItem="sO0-6g-LAv" secondAttribute="trailing" constant="16" id="YLY-Wx-jhN"/>
+                            <constraint firstItem="sO0-6g-LAv" firstAttribute="leading" secondItem="7Wt-Ao-TZM" secondAttribute="leading" constant="16" id="ZiN-qO-5p1"/>
+                            <constraint firstItem="sO0-6g-LAv" firstAttribute="centerY" secondItem="7Wt-Ao-TZM" secondAttribute="centerY" id="ikY-qG-tUN"/>
+                            <constraint firstItem="9s1-91-3rK" firstAttribute="trailing" secondItem="7Wt-Ao-TZM" secondAttribute="trailing" id="irf-AT-3uK"/>
+                            <constraint firstItem="9s1-91-3rK" firstAttribute="top" secondItem="zAh-A7-JTp" secondAttribute="top" id="qj0-65-gTC"/>
+                            <constraint firstItem="7Wt-Ao-TZM" firstAttribute="bottom" secondItem="s2d-gi-bHG" secondAttribute="bottom" constant="75" id="xX4-v8-SSc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Wt-Ao-TZM"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="9s1-91-3rK" id="9mR-TB-lhq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ys-dW-SIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="780" y="-170.46476761619192"/>
+        </scene>
+        <!--Page2-->
+        <scene sceneID="DfC-Cc-QvE">
+            <objects>
+                <viewController storyboardIdentifier="Page2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dxe-YO-683" customClass="Page2" customModule="EasyRoadsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y9w-oY-8Vy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7f0-Es-b10">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fun Facts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyh-WN-PnN">
+                                <rect key="frame" x="16" y="70" width="343" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="j7j-up-hS9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pattaya-Regular" family="Pattaya" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Wyh-WN-PnN" firstAttribute="leading" secondItem="6CW-VP-1Vh" secondAttribute="leading" constant="16" id="2Da-GB-68h"/>
+                            <constraint firstItem="7f0-Es-b10" firstAttribute="top" secondItem="Y9w-oY-8Vy" secondAttribute="top" id="bWo-XC-pPZ"/>
+                            <constraint firstItem="7f0-Es-b10" firstAttribute="bottom" secondItem="6CW-VP-1Vh" secondAttribute="bottom" id="d22-IQ-7q2"/>
+                            <constraint firstItem="7f0-Es-b10" firstAttribute="trailing" secondItem="6CW-VP-1Vh" secondAttribute="trailing" id="hck-mA-vRd"/>
+                            <constraint firstItem="7f0-Es-b10" firstAttribute="leading" secondItem="6CW-VP-1Vh" secondAttribute="leading" id="hq5-GJ-aZL"/>
+                            <constraint firstItem="Wyh-WN-PnN" firstAttribute="top" secondItem="6CW-VP-1Vh" secondAttribute="top" constant="50" id="ivf-wO-znq"/>
+                            <constraint firstItem="6CW-VP-1Vh" firstAttribute="trailing" secondItem="Wyh-WN-PnN" secondAttribute="trailing" constant="16" id="tKA-9F-jJK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6CW-VP-1Vh"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="7f0-Es-b10" id="Gcd-HC-7nn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gRU-ai-GmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1488.8" y="-170.46476761619192"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="JMh-Tu-3df">
+            <objects>
+                <viewController id="qPN-xy-lfY" customClass="MapViewController" customModule="EasyRoadsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6rI-rt-int">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="aOo-n5-FH2"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OFi-s5-meg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="648.79999999999995" y="572.56371814092961"/>
+        </scene>
+        <!--Page3-->
+        <scene sceneID="EHF-OC-Mok">
+            <objects>
+                <viewController storyboardIdentifier="Page3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hXG-AD-YeG" customClass="Page3" customModule="EasyRoadsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rVG-zm-vbs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRf-PN-4Py">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPe-Dh-Oaa">
+                                <rect key="frame" x="123" y="529" width="129" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="8mr-5a-VJY"/>
+                                    <constraint firstAttribute="height" constant="50" id="JjE-sV-FE6"/>
+                                </constraints>
+                                <state key="normal" title="Get Started">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionGetStarted:" destination="hXG-AD-YeG" eventType="touchUpInside" id="7Vr-v6-O0O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zRf-PN-4Py" firstAttribute="top" secondItem="rVG-zm-vbs" secondAttribute="top" id="7sQ-Q7-i32"/>
+                            <constraint firstItem="IPe-Dh-Oaa" firstAttribute="centerX" secondItem="e4I-QJ-gVp" secondAttribute="centerX" id="L0g-zB-sV5"/>
+                            <constraint firstItem="zRf-PN-4Py" firstAttribute="trailing" secondItem="e4I-QJ-gVp" secondAttribute="trailing" id="dJd-g0-Rka"/>
+                            <constraint firstItem="e4I-QJ-gVp" firstAttribute="bottom" secondItem="IPe-Dh-Oaa" secondAttribute="bottom" constant="88" id="gXy-bd-4sh"/>
+                            <constraint firstItem="zRf-PN-4Py" firstAttribute="bottom" secondItem="e4I-QJ-gVp" secondAttribute="bottom" id="ksS-Fb-9je"/>
+                            <constraint firstItem="zRf-PN-4Py" firstAttribute="leading" secondItem="e4I-QJ-gVp" secondAttribute="leading" id="zoZ-kT-1u9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e4I-QJ-gVp"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="zRf-PN-4Py" id="Bp7-mX-Y69"/>
+                        <outlet property="btnGetStarted" destination="IPe-Dh-Oaa" id="oAc-rS-D7Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ydA-Xb-8as" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2152.8000000000002" y="-168.6656671664168"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="easyroad_logo" width="300" height="300"/>
+    </resources>
 </document>

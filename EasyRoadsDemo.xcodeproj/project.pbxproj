@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		201F5C36F2D5DBE3D5E0E7A8 /* Pods_EasyRoadsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BCEBC5FA85C685EE043E8C /* Pods_EasyRoadsDemo.framework */; };
+		523317712074D2DF00443C54 /* CustomMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523317702074D2DF00443C54 /* CustomMarkerInfoWindow.swift */; };
+		523317732074E3CC00443C54 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523317722074E3CC00443C54 /* Location.swift */; };
+		523317752074FA8A00443C54 /* FunFactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523317742074FA8A00443C54 /* FunFactsView.swift */; };
+		523317772074FACB00443C54 /* FunFact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523317762074FACB00443C54 /* FunFact.swift */; };
+		523317792075050A00443C54 /* FunFactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523317782075050A00443C54 /* FunFactTableViewCell.swift */; };
+		5233177C20750BF100443C54 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233177B20750BF100443C54 /* Extensions.swift */; };
 		52455C9120737D29005492F0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52455C9020737D29005492F0 /* MapViewController.swift */; };
 		52455C9320738C18005492F0 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52455C9220738C18005492F0 /* SearchView.swift */; };
 		52783A43207350A500813977 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52783A42207350A500813977 /* AppDelegate.swift */; };
-		52783A45207350A500813977 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52783A44207350A500813977 /* ViewController.swift */; };
 		52783A48207350A500813977 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52783A46207350A500813977 /* Main.storyboard */; };
 		52783A4A207350A500813977 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52783A49207350A500813977 /* Assets.xcassets */; };
 		52783A4D207350A500813977 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52783A4B207350A500813977 /* LaunchScreen.storyboard */; };
@@ -47,11 +52,16 @@
 		0B2283BB62891FEAB7A1D694 /* Pods-EasyRoadsDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRoadsDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyRoadsDemoTests/Pods-EasyRoadsDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49BCEBC5FA85C685EE043E8C /* Pods_EasyRoadsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyRoadsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE7E198E370610DE0B34CAA /* Pods-EasyRoadsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRoadsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyRoadsDemo/Pods-EasyRoadsDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		523317702074D2DF00443C54 /* CustomMarkerInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerInfoWindow.swift; sourceTree = "<group>"; };
+		523317722074E3CC00443C54 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		523317742074FA8A00443C54 /* FunFactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunFactsView.swift; sourceTree = "<group>"; };
+		523317762074FACB00443C54 /* FunFact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunFact.swift; sourceTree = "<group>"; };
+		523317782075050A00443C54 /* FunFactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunFactTableViewCell.swift; sourceTree = "<group>"; };
+		5233177B20750BF100443C54 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		52455C9020737D29005492F0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52455C9220738C18005492F0 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		52783A3F207350A500813977 /* EasyRoadsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyRoadsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52783A42207350A500813977 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		52783A44207350A500813977 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52783A47207350A500813977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52783A49207350A500813977 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52783A4C207350A500813977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -103,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5233177A20750BCB00443C54 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5233177B20750BF100443C54 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		52783A36207350A500813977 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +146,7 @@
 		52783A41207350A500813977 /* EasyRoadsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5233177A20750BCB00443C54 /* Helpers */,
 				52783A42207350A500813977 /* AppDelegate.swift */,
 				52783A49207350A500813977 /* Assets.xcassets */,
 				52783A762073532700813977 /* Controllers */,
@@ -136,7 +155,6 @@
 				52783A46207350A500813977 /* Main.storyboard */,
 				52783A742073530C00813977 /* Models */,
 				52783A702073512900813977 /* Resources */,
-				52783A44207350A500813977 /* ViewController.swift */,
 				52783A752073531D00813977 /* Views */,
 			);
 			path = EasyRoadsDemo;
@@ -179,6 +197,8 @@
 		52783A742073530C00813977 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				523317722074E3CC00443C54 /* Location.swift */,
+				523317762074FACB00443C54 /* FunFact.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,6 +207,9 @@
 			isa = PBXGroup;
 			children = (
 				52455C9220738C18005492F0 /* SearchView.swift */,
+				523317702074D2DF00443C54 /* CustomMarkerInfoWindow.swift */,
+				523317742074FA8A00443C54 /* FunFactsView.swift */,
+				523317782075050A00443C54 /* FunFactTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -521,12 +544,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523317712074D2DF00443C54 /* CustomMarkerInfoWindow.swift in Sources */,
 				52783A7A207359F500813977 /* Page1.swift in Sources */,
-				52783A45207350A500813977 /* ViewController.swift in Sources */,
 				52783A7E20735BE300813977 /* Page3.swift in Sources */,
 				52783A782073534700813977 /* IntroPageViewController.swift in Sources */,
+				523317732074E3CC00443C54 /* Location.swift in Sources */,
 				52455C9320738C18005492F0 /* SearchView.swift in Sources */,
+				523317752074FA8A00443C54 /* FunFactsView.swift in Sources */,
+				523317792075050A00443C54 /* FunFactTableViewCell.swift in Sources */,
+				5233177C20750BF100443C54 /* Extensions.swift in Sources */,
 				52783A43207350A500813977 /* AppDelegate.swift in Sources */,
+				523317772074FACB00443C54 /* FunFact.swift in Sources */,
 				52783A7C20735BC700813977 /* Page2.swift in Sources */,
 				52455C9120737D29005492F0 /* MapViewController.swift in Sources */,
 			);

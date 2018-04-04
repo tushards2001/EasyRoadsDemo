@@ -18,6 +18,7 @@ protocol SearchViewDelegate: class {
     func sliderTapped(sender: SearchView, state: SliderState)
     func searchBarTextChanged(sender: SearchView, searchString: String)
     func predictionSelected(sender: SearchView, prediction: GMSAutocompletePrediction)
+    func clearMap(sender: SearchView)
 }
 
 class SearchView: UIView {
@@ -34,6 +35,18 @@ class SearchView: UIView {
         button.setImage(image, for: .normal)
         button.backgroundColor = UIColor(red: 43.0/255.0, green: 107.0/255.0, blue: 132.0/255.0, alpha: 0.75)
         //button.addTarget(self, action: #selector(), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let clearAllButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Clear All", for: .normal)
+        button.setTitleColor(UIColor(white: 1.0, alpha: 0.5), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.layer.cornerRadius = 3
+        button.layer.borderColor = UIColor(white: 1.0, alpha: 0.5).cgColor
+        button.layer.borderWidth = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -58,7 +71,8 @@ class SearchView: UIView {
         textField.isUserInteractionEnabled = true
         textField.isExclusiveTouch = true
         textField.allowsEditingTextAttributes = true
-        textField.clearButtonMode = .whileEditing
+        textField.clearButtonMode = UITextFieldViewMode.whileEditing
+        textField.clearsOnBeginEditing = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -124,6 +138,15 @@ class SearchView: UIView {
         //self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": searchBar]))
         
         
+        // clear button
+        
+        addSubview(clearAllButton)
+        clearAllButton.addTarget(self, action: #selector(clearAllButtonTapped(_:)), for: .touchUpInside)
+        clearAllButton.centerXAnchor.constraint(equalTo: self.searchPanel.centerXAnchor).isActive = true
+        clearAllButton.bottomAnchor.constraint(equalTo: self.searchPanel.bottomAnchor, constant: -16).isActive = true
+        clearAllButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        clearAllButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        
         
         // placesTableView
         
@@ -137,8 +160,15 @@ class SearchView: UIView {
         placesTableView.leftAnchor.constraint(equalTo: self.searchPanel.leftAnchor, constant: 8).isActive = true
         placesTableView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor, constant: 16).isActive = true
         placesTableView.rightAnchor.constraint(equalTo: self.searchPanel.rightAnchor, constant: -8).isActive = true
-        placesTableView.bottomAnchor.constraint(equalTo: self.searchPanel.bottomAnchor).isActive = true
+        placesTableView.bottomAnchor.constraint(equalTo: self.clearAllButton.topAnchor, constant: -16).isActive = true
         
+    }
+    
+    @objc func clearAllButtonTapped(_ sender: UIButton) {
+        searchBar.text = ""
+        predictions.removeAll()
+        placesTableView.reloadData()
+        delegate?.clearMap(sender: self)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -202,6 +232,7 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
         
         if let prediction = predictions[indexPath.row] as? GMSAutocompletePrediction {
             cell.textLabel?.text = "\(prediction.attributedPrimaryText.string)"
+            cell.detailTextLabel?.text = "\(String(describing: prediction.attributedSecondaryText?.string))"
         } else {
             cell.textLabel?.text = "-"
         }
@@ -218,9 +249,9 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
-    }
+    /*func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }*/
     
 }
 
@@ -231,7 +262,9 @@ extension SearchView: UITextFieldDelegate {
         return true
     }
     
-    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.becomeFirstResponder()

@@ -143,6 +143,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="7f0-Es-b10" id="Gcd-HC-7nn"/>
+                        <outlet property="lblFunFacts" destination="Wyh-WN-PnN" id="WhH-dB-bxW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRU-ai-GmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,11 +178,12 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPe-Dh-Oaa">
-                                <rect key="frame" x="123" y="529" width="129" height="50"/>
+                                <rect key="frame" x="87.5" y="529" width="200" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="129" id="8mr-5a-VJY"/>
+                                    <constraint firstAttribute="width" constant="200" id="8mr-5a-VJY"/>
                                     <constraint firstAttribute="height" constant="50" id="JjE-sV-FE6"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Get Started">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -189,14 +191,33 @@
                                     <action selector="actionGetStarted:" destination="hXG-AD-YeG" eventType="touchUpInside" id="7Vr-v6-O0O"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_route" translatesAutoresizingMaskIntoConstraints="NO" id="m95-0y-tKs">
+                                <rect key="frame" x="112" y="70" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="2su-YV-2Iz"/>
+                                    <constraint firstAttribute="height" constant="150" id="CRh-u2-plo"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick your destination, get on road, follow the route with cool pit stops" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwP-6c-7lt">
+                                <rect key="frame" x="16" y="228" width="343" height="293"/>
+                                <fontDescription key="fontDescription" name="Pattaya-Regular" family="Pattaya" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="m95-0y-tKs" firstAttribute="top" secondItem="e4I-QJ-gVp" secondAttribute="top" constant="50" id="0Ki-i0-MbH"/>
+                            <constraint firstItem="m95-0y-tKs" firstAttribute="centerX" secondItem="e4I-QJ-gVp" secondAttribute="centerX" id="0MY-wW-5JM"/>
+                            <constraint firstItem="uwP-6c-7lt" firstAttribute="top" secondItem="m95-0y-tKs" secondAttribute="bottom" constant="8" id="6X9-MP-jsd"/>
                             <constraint firstItem="zRf-PN-4Py" firstAttribute="top" secondItem="rVG-zm-vbs" secondAttribute="top" id="7sQ-Q7-i32"/>
                             <constraint firstItem="IPe-Dh-Oaa" firstAttribute="centerX" secondItem="e4I-QJ-gVp" secondAttribute="centerX" id="L0g-zB-sV5"/>
+                            <constraint firstItem="uwP-6c-7lt" firstAttribute="leading" secondItem="e4I-QJ-gVp" secondAttribute="leading" constant="16" id="TOO-eZ-zEG"/>
+                            <constraint firstItem="IPe-Dh-Oaa" firstAttribute="top" secondItem="uwP-6c-7lt" secondAttribute="bottom" constant="8" id="WRz-IJ-0So"/>
                             <constraint firstItem="zRf-PN-4Py" firstAttribute="trailing" secondItem="e4I-QJ-gVp" secondAttribute="trailing" id="dJd-g0-Rka"/>
                             <constraint firstItem="e4I-QJ-gVp" firstAttribute="bottom" secondItem="IPe-Dh-Oaa" secondAttribute="bottom" constant="88" id="gXy-bd-4sh"/>
                             <constraint firstItem="zRf-PN-4Py" firstAttribute="bottom" secondItem="e4I-QJ-gVp" secondAttribute="bottom" id="ksS-Fb-9je"/>
+                            <constraint firstItem="e4I-QJ-gVp" firstAttribute="trailing" secondItem="uwP-6c-7lt" secondAttribute="trailing" constant="16" id="tuU-J3-efK"/>
                             <constraint firstItem="zRf-PN-4Py" firstAttribute="leading" secondItem="e4I-QJ-gVp" secondAttribute="leading" id="zoZ-kT-1u9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e4I-QJ-gVp"/>
@@ -213,5 +234,6 @@
     </scenes>
     <resources>
         <image name="easyroad_logo" width="300" height="300"/>
+        <image name="icon_route" width="150" height="150"/>
     </resources>
 </document>

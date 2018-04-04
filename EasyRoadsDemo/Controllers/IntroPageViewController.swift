@@ -99,6 +99,7 @@ extension IntroPageViewController: UIPageViewControllerDataSource {
         guard pages.count > previousIndex else { return nil }
         
         return pages[previousIndex]
+        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {

@@ -14,18 +14,26 @@ import GooglePlaces
 class MapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
+    var currentLocationDetected: Bool = false
     
     var searchView: SearchView!
+    
     var googleMapView: GMSMapView!
+    //var cameraPosition = GMSCameraPosition()
+    
+    // locations array
+    var locationsArray = [CLLocation]()
+    var locations = [Location]()
+    var polyLines = [GMSPolyline]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        //initLocationManager()
+        initLocationManager()
         
-        setupGoogleMap()
+        //showCurrentLocationOnMap()
         
         
         setupStatusBar()
@@ -42,26 +50,35 @@ class MapViewController: UIViewController {
     
     func initLocationManager() {
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
     }
     
-    func setupGoogleMap() {
+    func showCurrentLocationOnMap() {
         
-        let cameraPosition = GMSCameraPosition.camera(withLatitude: 19.2793524032638, longitude: 72.8749670740896, zoom: 10.0)
-        //let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPosition)
-        //view = mapView
+        let cameraPosition = GMSCameraPosition.camera(withLatitude: (self.locationManager.location?.coordinate.latitude)!, longitude: (self.locationManager.location?.coordinate.longitude)!, zoom: 10.0)
         
         
-        googleMapView = GMSMapView.map(withFrame: CGRect(x: 0, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height), camera: cameraPosition)
-        view.addSubview(googleMapView)
+        if googleMapView == nil {
+            googleMapView = GMSMapView.map(withFrame: CGRect(x: 0, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height), camera: cameraPosition)
+            googleMapView.delegate = self
+            view.addSubview(googleMapView)
+        }
+        
+        googleMapView.animate(to: cameraPosition)
+        
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 19.2793524032638, longitude: 72.8749670740896)
-        marker.title = "You"
+        marker.position = cameraPosition.target
+        marker.title = "Current Location"
         marker.snippet = "You are here"
+        marker.appearAnimation = .pop
         marker.map = googleMapView //mapView
+
+        
+        let location = Location(withLocation: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude), mapMarker: marker)
+        locations.append(location)
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +115,9 @@ class MapViewController: UIViewController {
         print("Place = \(placeName)")
         print("Latitude = \(coordinates.latitude) | Longitude = \(coordinates.longitude)")
         
+        let loc = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        locationsArray.append(loc)
+        
         let cameraPosition = GMSCameraPosition.camera(withLatitude: coordinates.latitude, longitude: coordinates.longitude, zoom: 10.0)
         /*let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPosition)
         view = mapView*/
@@ -109,6 +129,74 @@ class MapViewController: UIViewController {
         
         googleMapView.camera = cameraPosition
         
+        
+        // append to location array
+        let location = Location(withLocation: CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude), mapMarker: marker)
+        locations.append(location)
+        
+        
+        // show driving directions
+        showDirections()
+    }
+    
+    func showDirections() {
+        
+        for i in 0..<locations.count {
+            
+            if (i+1) < locations.count {
+                let originlocation = locations[i]
+                let destinationLocation = locations[i+1]
+                
+                let origin = "\(originlocation.placeLocation.coordinate.latitude),\(originlocation.placeLocation.coordinate.longitude)"
+                let destination = "\(destinationLocation.placeLocation.coordinate.latitude),\(destinationLocation.placeLocation.coordinate.longitude)"
+                //let optimizeString = "optimize:true|\(origin)|\(destination)"
+                
+                let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&alternatives=true"
+                print("\n\(urlString)\n")
+                
+                guard let url = URL(string: urlString) else {
+                    print("Error: Cannot create URL")
+                    return
+                }
+                
+                let urlRequest = URLRequest(url: url)
+                let config = URLSessionConfiguration.default
+                let session = URLSession(configuration: config)
+                
+                let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+                    
+                    if error != nil {
+                        print("Error: \(error!)")
+                    } else {
+                        do {
+                            //let json = try JSONSerialization.data(withJSONObject: data, options: []) as? NSDictionary
+                            let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary
+                            let routes = json!["routes"] as! [[String: Any]]
+                            
+                            for route in routes {
+                                let routeOverviewPolyline = route["overview_polyline"] as! [String: Any]
+                                let points = routeOverviewPolyline["points"] as! String
+                                let path = GMSPath.init(fromEncodedPath: points)
+                                let polyline = GMSPolyline.init(path: path)
+                                polyline.strokeWidth = 4
+                                polyline.strokeColor = UIColor.blue
+                                polyline.map = self.googleMapView
+                                
+                                self.polyLines.append(polyline)
+                                //destinationLocation.polyLine = polyline
+                            }
+                        } catch let err {
+                            print("JSON Error: \(err)")
+                        }
+                    }
+                    
+                })
+                
+                task.resume()
+            }
+            
+        }
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -117,7 +205,80 @@ class MapViewController: UIViewController {
 
 }
 
+extension MapViewController: GMSMapViewDelegate {
+    
+    /*func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        
+        let view = CustomMarkerInfoWindow(frame: CGRect(x: 0, y: 0, width: 200, height: 80), marker: marker, title: marker.title!)
+        view.delegate = self
+        return view
+    }*/
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        if marker.title != "Current Location" {
+            marker.map = nil
+            
+            var index: Int = -1
+            
+            for i in 0..<locations.count {
+                let location = locations[i]
+                if location.marker == marker {
+                    index = i
+                    //break
+                }
+                
+                if let polyLine = location.polyLine {
+                    polyLine.map = nil
+                }
+            }
+            
+            // remove all route drawings
+            for polyLine in polyLines {
+                polyLine.map = nil
+            }
+            
+            polyLines.removeAll()
+            
+            
+            
+            
+            // remove location from locations array
+            if index > -1 {
+                locations.remove(at: index)
+                //self.googleMapView.clear()
+                
+                self.showDirections()
+            }
+        }
+        
+        return true
+    }
+    
+}
+
+extension MapViewController: CustomMarkerInfoWindowDelegate {
+    
+    func removeMarkerInfoWindow(_ sender: CustomMarkerInfoWindow, marker: GMSMarker) {
+        marker.map = nil
+    }
+    
+}
+
 extension MapViewController: SearchViewDelegate {
+    
+    
+    func clearMap(sender: SearchView) {
+        self.locations.removeAll()
+        self.googleMapView.clear()
+        self.currentLocationDetected = false
+        self.locationManager.startUpdatingLocation()
+        
+        // to close the slider
+        self.sliderTapped(sender: sender, state: SliderState.SliderStateClosed)
+    }
+    
+    
+    
     
     func predictionSelected(sender: SearchView, prediction: GMSAutocompletePrediction) {
         /*print("----------------- show place ------------------")
@@ -181,15 +342,6 @@ extension MapViewController: SearchViewDelegate {
                 }*/
             }
         }
-        
-        /*placeClient.lookUpPlaceID("ElJNaXJhIFJvYWQgRWFzdCwgQUcgTmFnYXIsIE1JREMsIE1pcmEgUm9hZCBFYXN0LCBNaXJhIEJoYXlhbmRhciwgTWFoYXJhc2h0cmEsIEluZGlh") { (place, error) in
-            if error != nil {
-                print("Error: \(String(describing: error))")
-            } else {
-                print("\(String(describing: place?.coordinate.latitude))/\(String(describing: place?.coordinate.longitude))")
-            }
-        }*/
- 
     }
     
     
@@ -199,8 +351,16 @@ extension MapViewController: SearchViewDelegate {
 extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        print("\(location.coordinate.latitude)/\(location.coordinate.longitude)")
+        
+        if !currentLocationDetected {
+            currentLocationDetected = true
+            
+            locationsArray.append(locations[0])
+            
+            manager.stopUpdatingLocation()
+            self.showCurrentLocationOnMap()
+        }
+        
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 public enum SliderState: String {
     case SliderStateOpened
@@ -16,11 +17,14 @@ public enum SliderState: String {
 protocol SearchViewDelegate: class {
     func sliderTapped(sender: SearchView, state: SliderState)
     func searchBarTextChanged(sender: SearchView, searchString: String)
+    func predictionSelected(sender: SearchView, prediction: GMSAutocompletePrediction)
 }
 
 class SearchView: UIView {
     
     var state: SliderState = SliderState.SliderStateClosed
+    
+    var predictions = [GMSAutocompletePrediction]()
     
     weak var delegate: SearchViewDelegate?
     
@@ -54,6 +58,7 @@ class SearchView: UIView {
         textField.isUserInteractionEnabled = true
         textField.isExclusiveTouch = true
         textField.allowsEditingTextAttributes = true
+        textField.clearButtonMode = .whileEditing
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -173,6 +178,12 @@ class SearchView: UIView {
         self.searchBar.resignFirstResponder()
     }
     
+    public func updatePredictionsData(withArray data:[GMSAutocompletePrediction]) {
+        predictions.removeAll()
+        predictions = data
+        self.placesTableView.reloadData()
+    }
+    
     
 }
 
@@ -183,16 +194,28 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return predictions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Item \(indexPath.row + 1)"
+        
+        if let prediction = predictions[indexPath.row] as? GMSAutocompletePrediction {
+            cell.textLabel?.text = "\(prediction.attributedPrimaryText.string)"
+        } else {
+            cell.textLabel?.text = "-"
+        }
+        
         cell.textLabel?.textColor = UIColor.white
         cell.selectionStyle = .none
         cell.backgroundColor = UIColor.clear
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let prediction = predictions[indexPath.row] as? GMSAutocompletePrediction {
+            delegate?.predictionSelected(sender: self, prediction: prediction)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

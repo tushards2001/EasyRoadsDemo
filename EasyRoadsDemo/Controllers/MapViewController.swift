@@ -14,7 +14,9 @@ import GooglePlaces
 class MapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
+    
     var searchView: SearchView!
+    var googleMapView: GMSMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,15 +49,19 @@ class MapViewController: UIViewController {
     func setupGoogleMap() {
         
         let cameraPosition = GMSCameraPosition.camera(withLatitude: 19.2793524032638, longitude: 72.8749670740896, zoom: 10.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPosition)
-        view = mapView
+        //let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPosition)
+        //view = mapView
+        
+        
+        googleMapView = GMSMapView.map(withFrame: CGRect(x: 0, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height), camera: cameraPosition)
+        view.addSubview(googleMapView)
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: 19.2793524032638, longitude: 72.8749670740896)
         marker.title = "You"
         marker.snippet = "You are here"
-        marker.map = mapView
+        marker.map = googleMapView //mapView
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,6 +94,23 @@ class MapViewController: UIViewController {
         
     }
     
+    func putDestinationMarker(coordinates: CLLocationCoordinate2D, placeName: String) {
+        print("Place = \(placeName)")
+        print("Latitude = \(coordinates.latitude) | Longitude = \(coordinates.longitude)")
+        
+        let cameraPosition = GMSCameraPosition.camera(withLatitude: coordinates.latitude, longitude: coordinates.longitude, zoom: 10.0)
+        /*let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPosition)
+        view = mapView*/
+        
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        marker.title = placeName
+        marker.map = googleMapView
+        
+        googleMapView.camera = cameraPosition
+        
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -95,6 +118,28 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: SearchViewDelegate {
+    
+    func predictionSelected(sender: SearchView, prediction: GMSAutocompletePrediction) {
+        /*print("----------------- show place ------------------")
+        print("Name: \(prediction.attributedPrimaryText.string)")
+        print("ID: \(prediction.placeID!)")*/
+        
+        let placeClient = GMSPlacesClient()
+        
+        placeClient.lookUpPlaceID(prediction.placeID!) { (place, error) in
+            if error != nil {
+                print("Error: \(String(describing: error))")
+            } else {
+                if let coordinates = place?.coordinate {
+                    // show place on map with marker
+                    self.putDestinationMarker(coordinates: coordinates, placeName: prediction.attributedPrimaryText.string)
+                    
+                    // to close the slider
+                    self.sliderTapped(sender: sender, state: SliderState.SliderStateClosed)
+                }
+            }
+        }
+    }
     
     func sliderTapped(sender: SearchView, state: SliderState) {
         if state == SliderState.SliderStateOpened {
@@ -123,23 +168,31 @@ extension MapViewController: SearchViewDelegate {
             if error != nil {
                 print("Error: \(String(describing: error))")
             } else {
-                for result in results! {
-                    if let result = result as? GMSAutocompletePrediction {
-                        //print("\(result.attributedFullText.string)")
-                        print("\(String(describing: result.placeID))")
-                    }
+                DispatchQueue.main.async {
+                    self.searchView.updatePredictionsData(withArray: results!)
                 }
+                
+                /*for result in results! {
+                    if let result = result as? GMSAutocompletePrediction {
+                        print("\(result)")
+                        //print("\(result.attributedFullText.string)")
+                        //print("\(String(describing: result.placeID))")
+                    }
+                }*/
             }
         }
         
-        placeClient.lookUpPlaceID("ElJNaXJhIFJvYWQgRWFzdCwgQUcgTmFnYXIsIE1JREMsIE1pcmEgUm9hZCBFYXN0LCBNaXJhIEJoYXlhbmRhciwgTWFoYXJhc2h0cmEsIEluZGlh") { (place, error) in
+        /*placeClient.lookUpPlaceID("ElJNaXJhIFJvYWQgRWFzdCwgQUcgTmFnYXIsIE1JREMsIE1pcmEgUm9hZCBFYXN0LCBNaXJhIEJoYXlhbmRhciwgTWFoYXJhc2h0cmEsIEluZGlh") { (place, error) in
             if error != nil {
                 print("Error: \(String(describing: error))")
             } else {
                 print("\(String(describing: place?.coordinate.latitude))/\(String(describing: place?.coordinate.longitude))")
             }
-        }
+        }*/
+ 
     }
+    
+    
     
 }
 

@@ -27,6 +27,7 @@
 		52783A7A207359F500813977 /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52783A79207359F500813977 /* Page1.swift */; };
 		52783A7C20735BC700813977 /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52783A7B20735BC700813977 /* Page2.swift */; };
 		52783A7E20735BE300813977 /* Page3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52783A7D20735BE300813977 /* Page3.swift */; };
+		52C0B3692075F6900020E0E1 /* OffilneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C0B3682075F6900020E0E1 /* OffilneView.swift */; };
 		735F1992FBD8B68BAF29B95C /* Pods_EasyRoadsDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BCD7FDC4A90B4CC9010A2F /* Pods_EasyRoadsDemoTests.framework */; };
 		75123BF3050CD329902757CA /* Pods_EasyRoadsDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FC3A260591B266903C8AD0 /* Pods_EasyRoadsDemoUITests.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		52783A79207359F500813977 /* Page1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
 		52783A7B20735BC700813977 /* Page2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
 		52783A7D20735BE300813977 /* Page3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3.swift; sourceTree = "<group>"; };
+		52C0B3682075F6900020E0E1 /* OffilneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffilneView.swift; sourceTree = "<group>"; };
 		7C565FFBF7D7039185D9824C /* Pods-EasyRoadsDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRoadsDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyRoadsDemoTests/Pods-EasyRoadsDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ACEDA5A8BBADAF0D94664C5F /* Pods-EasyRoadsDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRoadsDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyRoadsDemoUITests/Pods-EasyRoadsDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B8BCD7FDC4A90B4CC9010A2F /* Pods_EasyRoadsDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyRoadsDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +212,7 @@
 				523317702074D2DF00443C54 /* CustomMarkerInfoWindow.swift */,
 				523317742074FA8A00443C54 /* FunFactsView.swift */,
 				523317782075050A00443C54 /* FunFactTableViewCell.swift */,
+				52C0B3682075F6900020E0E1 /* OffilneView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,9 +398,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EasyRoadsDemo/Pods-EasyRoadsDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -554,6 +560,7 @@
 				523317792075050A00443C54 /* FunFactTableViewCell.swift in Sources */,
 				5233177C20750BF100443C54 /* Extensions.swift in Sources */,
 				52783A43207350A500813977 /* AppDelegate.swift in Sources */,
+				52C0B3692075F6900020E0E1 /* OffilneView.swift in Sources */,
 				523317772074FACB00443C54 /* FunFact.swift in Sources */,
 				52783A7C20735BC700813977 /* Page2.swift in Sources */,
 				52455C9120737D29005492F0 /* MapViewController.swift in Sources */,

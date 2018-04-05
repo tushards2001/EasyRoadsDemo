@@ -66,13 +66,13 @@ class SearchView: UIView {
         textField.layer.cornerRadius = 5
         textField.layer.borderColor = UIColor.white.cgColor
         textField.layer.borderWidth = 1
-        textField.textColor = UIColor(white: 1.0, alpha: 0.7)
+        textField.textColor = UIColor(white: 1.0, alpha: 1)
         textField.placeholder = "Search Place..."
         textField.isUserInteractionEnabled = true
-        textField.isExclusiveTouch = true
-        textField.allowsEditingTextAttributes = true
-        textField.clearButtonMode = UITextFieldViewMode.whileEditing
-        textField.clearsOnBeginEditing = true
+        //textField.isExclusiveTouch = true
+        //textField.allowsEditingTextAttributes = true
+        textField.clearButtonMode = UITextFieldViewMode.always
+        //textField.clearsOnBeginEditing = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -168,7 +168,9 @@ class SearchView: UIView {
         searchBar.text = ""
         predictions.removeAll()
         placesTableView.reloadData()
+        
         delegate?.clearMap(sender: self)
+        self.sliderButton.setImage(UIImage(named: "icon_search"), for: .normal)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -185,9 +187,14 @@ class SearchView: UIView {
         print("silderButtonTapped")
         if state == SliderState.SliderStateClosed {
             delegate?.sliderTapped(sender: self, state: SliderState.SliderStateOpened)
+            self.sliderButton.setImage(UIImage(named: "icon_close"), for: .normal)
+            self.searchBar.text = ""
+            self.predictions.removeAll()
+            self.placesTableView.reloadData()
             //searchBar.becomeFirstResponder()
         } else {
             delegate?.sliderTapped(sender: self, state: SliderState.SliderStateClosed)
+            self.sliderButton.setImage(UIImage(named: "icon_search"), for: .normal)
             //searchBar.resignFirstResponder()
         }
         
@@ -245,6 +252,7 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let prediction = predictions[indexPath.row] as? GMSAutocompletePrediction {
+            self.sliderButton.setImage(UIImage(named: "icon_search"), for: .normal)
             delegate?.predictionSelected(sender: self, prediction: prediction)
         }
     }
@@ -271,17 +279,6 @@ extension SearchView: UITextFieldDelegate {
     }
 }
 
-extension UIView {
-    
-    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
-    }
-    
-}
-
 extension UITextField {
     
     func setLeftPaddingPoints(_ amount:CGFloat){
@@ -289,9 +286,14 @@ extension UITextField {
         self.leftView = paddingView
         self.leftViewMode = .always
     }
+    
     func setRightPaddingPoints(_ amount:CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.rightView = paddingView
         self.rightViewMode = .always
     }
 }
+
+
+
+

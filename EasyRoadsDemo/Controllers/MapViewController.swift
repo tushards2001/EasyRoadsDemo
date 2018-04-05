@@ -10,6 +10,8 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import GooglePlaces
+import Reachability
+
 
 class MapViewController: UIViewController {
     
@@ -25,11 +27,19 @@ class MapViewController: UIViewController {
     var locationsArray = [CLLocation]()
     var locations = [Location]()
     var polyLines = [GMSPolyline]()
+    
+    // rechability
+    let reachability = Reachability()!
+    
+    // offline
+    var offlineView: OfflineView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
         
         initLocationManager()
         
@@ -42,10 +52,79 @@ class MapViewController: UIViewController {
         
     }
     
+    func showOfflineView() {
+        if offlineView == nil {
+            let frameRect = CGRect(x: 0, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
+            offlineView = OfflineView(frame: frameRect)
+            offlineView.alpha = 0
+            self.view.addSubview(offlineView)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.offlineView.alpha = 1
+            }, completion: { (finished) in
+                //
+            })
+        } else {
+            print("OfflineView already added")
+        }
+    }
+    
+    func removeOfflineView() {
+        if offlineView != nil {
+            if offlineView.isDescendant(of: self.view) {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.offlineView.alpha = 0
+                }, completion: { (finished) in
+                    self.offlineView.removeFromSuperview()
+                    self.offlineView = nil
+                })
+            } else {
+                print("OfflineView not available")
+            }
+        }
+        
+    }
+    
+    @objc func reachabilityChanged(notification: Notification) {
+        let reach = notification.object as! Reachability
+        
+        switch reach.connection {
+        case .wifi:
+            print("WiFi Connection")
+            removeOfflineView()
+            
+        case .cellular:
+            print("Cellular Connection")
+            removeOfflineView()
+            
+        case .none:
+            print("No Connection")
+            showOfflineView()
+            
+        default:
+            ()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         setupSearchView()
+        
+        // reachability notifier
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(notification:)), name: .reachabilityChanged, object: nil)
+        
+        do {
+            try reachability.startNotifier()
+        } catch let error {
+            print("Error: Could not start reachability notifier. (\(error)")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
     }
     
     func initLocationManager() {
@@ -74,6 +153,7 @@ class MapViewController: UIViewController {
         marker.title = "Current Location"
         marker.snippet = "You are here"
         marker.appearAnimation = .pop
+        marker.icon = GMSMarker.markerImage(with: UIColor.green)
         marker.map = googleMapView //mapView
 
         
@@ -151,7 +231,7 @@ class MapViewController: UIViewController {
                 let destination = "\(destinationLocation.placeLocation.coordinate.latitude),\(destinationLocation.placeLocation.coordinate.longitude)"
                 //let optimizeString = "optimize:true|\(origin)|\(destination)"
                 
-                let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&alternatives=true"
+                let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&alternatives=false"
                 print("\n\(urlString)\n")
                 
                 guard let url = URL(string: urlString) else {
@@ -177,9 +257,10 @@ class MapViewController: UIViewController {
                                 let routeOverviewPolyline = route["overview_polyline"] as! [String: Any]
                                 let points = routeOverviewPolyline["points"] as! String
                                 let path = GMSPath.init(fromEncodedPath: points)
+                                
                                 let polyline = GMSPolyline.init(path: path)
                                 polyline.strokeWidth = 4
-                                polyline.strokeColor = UIColor.blue
+                                polyline.strokeColor = UIColor.rgb(red: 0, green: 179, blue: 253)
                                 polyline.map = self.googleMapView
                                 
                                 self.polyLines.append(polyline)

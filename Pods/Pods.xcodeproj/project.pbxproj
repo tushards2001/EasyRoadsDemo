@@ -7,75 +7,108 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D050054B84F66F7AE81497A9077CC88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		267B28FEF0DFC4A4164EC6B192ED94C9 /* Pods-EasyRoadsDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23BD9B356398A38E7D56C63ABF3AEF /* Pods-EasyRoadsDemo-dummy.m */; };
+		2A11BE1B81D329C45F33550E5982336F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
+		2D3F7940C3CCD6007F56DFD31010920E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FAD68DDA34BDCFEDFD21B6A3F0983 /* Reachability.swift */; };
+		31B17070DFE839F60B8942C2E1396960 /* ReachabilitySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A907C1D55FAA7AA51DEF44BF2035AC5D /* ReachabilitySwift-dummy.m */; };
+		3D050054B84F66F7AE81497A9077CC88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
 		4530BB64EB49FBF4852A6783B435A96C /* Pods-EasyRoadsDemoUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D023360DCC380EE6A39B700CBB819E1 /* Pods-EasyRoadsDemoUITests-dummy.m */; };
+		5C37338F504F095DACA5F6C4B26FC5AF /* ReachabilitySwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 73F737471F0D1306D8DFE2F545237AD8 /* ReachabilitySwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		727DB72BB89635DBD0D53EE7775DA1D9 /* Pods-EasyRoadsDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0392F4E8CFFF669DB198624B3778BDA2 /* Pods-EasyRoadsDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		789127207CD8578A697CB2DCA5D9A1BC /* Pods-EasyRoadsDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 234FFE204599672AA0146D03DA602B67 /* Pods-EasyRoadsDemoTests-dummy.m */; };
-		8848F7ED077E4EFC80E4C54ED0ED3A0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		887144BA41044AA1DC594A6E4D25C684 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		8D15924D214B4DED4FAD8F0BD6625B86 /* Pods-EasyRoadsDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23BD9B356398A38E7D56C63ABF3AEF /* Pods-EasyRoadsDemo-dummy.m */; };
+		887144BA41044AA1DC594A6E4D25C684 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
 		D6D3BE9DC46C05E8AC94FF323665428A /* Pods-EasyRoadsDemoUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 96B7F7F6381A7A467D1093821B8B6F04 /* Pods-EasyRoadsDemoUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD145E516DAAF078E9AF0E43878465F6 /* Pods-EasyRoadsDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D976B04CD41D69D1CE1AA4055143FD6F /* Pods-EasyRoadsDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DEDCB93709781DD95F32BE106CF241C5 /* Pods-EasyRoadsDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0392F4E8CFFF669DB198624B3778BDA2 /* Pods-EasyRoadsDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7D485BAE6CC23A674102C0C147A3E49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
+		F46B3253DB15EDA0AB2B769E0ADE5C2D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AF9EC704AAD470CAC8FE0D05A5430B /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AF88B09AA9D529A09F5F725F9AD08304 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1328BA617DAE879C342E6E400A1FB7B6;
+			remoteInfo = ReachabilitySwift;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		00F97471410C807B92FDAA14FD75F48E /* Pods_EasyRoadsDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EasyRoadsDemoTests.framework; path = "Pods-EasyRoadsDemoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0392F4E8CFFF669DB198624B3778BDA2 /* Pods-EasyRoadsDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EasyRoadsDemo-umbrella.h"; sourceTree = "<group>"; };
 		074C9E17ADC3FA94979FAB0481FB33E0 /* Pods-EasyRoadsDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EasyRoadsDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
-		08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		18E81482204F69C70F0524239C43EF0C /* Pods-EasyRoadsDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EasyRoadsDemo-resources.sh"; sourceTree = "<group>"; };
-		1C6200385182862E9168588E60B1CD37 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		198275D8AB612CA7B09FBA230A30191D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EF014B81BD4EBB4C2E20F2AE9F82809 /* ReachabilitySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-prefix.pch"; sourceTree = "<group>"; };
 		1F604B02DA2B0D267484379CFDD716BB /* Pods-EasyRoadsDemoUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EasyRoadsDemoUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		234FFE204599672AA0146D03DA602B67 /* Pods-EasyRoadsDemoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EasyRoadsDemoTests-dummy.m"; sourceTree = "<group>"; };
+		2DC7A4EB2F1147DBD5A6BE8557A5B656 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		31AE1069CBE94C74F72C515366A0FD41 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
 		3263B25AA83481E37D5B6B2346F3922F /* Pods-EasyRoadsDemoTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EasyRoadsDemoTests-frameworks.sh"; sourceTree = "<group>"; };
 		3D023360DCC380EE6A39B700CBB819E1 /* Pods-EasyRoadsDemoUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EasyRoadsDemoUITests-dummy.m"; sourceTree = "<group>"; };
 		3E610EB4B08C8D2AFD67E6C17A8FFC6A /* Pods-EasyRoadsDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EasyRoadsDemo-acknowledgements.plist"; sourceTree = "<group>"; };
+		423A6FE698D618690BC1BC3819F9CCEE /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
 		47C9374911C520E5CF4938C3E45E1215 /* Pods-EasyRoadsDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EasyRoadsDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		498BCCF77A94234EBEF3CF111F278496 /* Pods-EasyRoadsDemoUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EasyRoadsDemoUITests-resources.sh"; sourceTree = "<group>"; };
+		49A495EBD66E4A86AFB9EFD615D05672 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		4B5A97C8160E43D12A91F931CC33E744 /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Reachability.framework; path = ReachabilitySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5525A1427B06A4CDC06F60438A3EFCB0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60153FD3BA68CEB0DC4592399A4BED89 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		611CC32273C65EEC6DECAAA35121A353 /* Pods-EasyRoadsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EasyRoadsDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		63531906F7289BAB43A6710C63323CB3 /* Pods-EasyRoadsDemoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-EasyRoadsDemoTests.modulemap"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		694FAD68DDA34BDCFEDFD21B6A3F0983 /* Reachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Reachability/Reachability.swift; sourceTree = "<group>"; };
+		6A093B15ED07E0173EB89BFEAC3D6FD7 /* Pods_EasyRoadsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EasyRoadsDemo.framework; path = "Pods-EasyRoadsDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A936195A73BB922FE0CEA7F3D60FFF6 /* Pods-EasyRoadsDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EasyRoadsDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		73F737471F0D1306D8DFE2F545237AD8 /* ReachabilitySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-umbrella.h"; sourceTree = "<group>"; };
+		7405458FA3F19339BE8D3D02FB3C4032 /* Pods_EasyRoadsDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EasyRoadsDemoTests.framework; path = "Pods-EasyRoadsDemoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF8CA12FE4E6BC6306E2B179E8BB291 /* Pods-EasyRoadsDemoUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EasyRoadsDemoUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		84465FABD642722612F5331588075181 /* Pods-EasyRoadsDemoTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EasyRoadsDemoTests-resources.sh"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9567E78C8902E41D7B1F7A20F9F405DA /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		9627D5723802661844734E3395F98044 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96B7F7F6381A7A467D1093821B8B6F04 /* Pods-EasyRoadsDemoUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EasyRoadsDemoUITests-umbrella.h"; sourceTree = "<group>"; };
+		97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		9E70322845EB7058C911E68ABA53AE66 /* Pods-EasyRoadsDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EasyRoadsDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A65ED65616C5861E2765BDC60AAAF910 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
-		A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		A907C1D55FAA7AA51DEF44BF2035AC5D /* ReachabilitySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReachabilitySwift-dummy.m"; sourceTree = "<group>"; };
 		A95616FDF33470531AA0A72F564E9E30 /* Pods-EasyRoadsDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EasyRoadsDemo-frameworks.sh"; sourceTree = "<group>"; };
 		AF23BD9B356398A38E7D56C63ABF3AEF /* Pods-EasyRoadsDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EasyRoadsDemo-dummy.m"; sourceTree = "<group>"; };
-		B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		B5201DA46DAFC7D4C3C2FE9A5399F124 /* ReachabilitySwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ReachabilitySwift.modulemap; sourceTree = "<group>"; };
 		B67BBC30F20D9AD2B1F16EED4F2B962E /* Pods-EasyRoadsDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EasyRoadsDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		C73AA82E0DC05C0F155D9E98CD99A472 /* Pods-EasyRoadsDemoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EasyRoadsDemoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C965319B28E19D8CF4A536E71BCCAC13 /* Pods-EasyRoadsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EasyRoadsDemo.release.xcconfig"; sourceTree = "<group>"; };
 		CA9FD168F176573953A673CD24F1A78C /* Pods-EasyRoadsDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-EasyRoadsDemo.modulemap"; sourceTree = "<group>"; };
 		CD1F574D4E6F57A77548E068B7BF468D /* Pods-EasyRoadsDemoUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-EasyRoadsDemoUITests.modulemap"; sourceTree = "<group>"; };
 		D976B04CD41D69D1CE1AA4055143FD6F /* Pods-EasyRoadsDemoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EasyRoadsDemoTests-umbrella.h"; sourceTree = "<group>"; };
-		E3B2353961F2F89DF8A17D7B0DC9665C /* Pods_EasyRoadsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EasyRoadsDemo.framework; path = "Pods-EasyRoadsDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6AE2D3FFBA172EE49504B20DC41036E /* Pods_EasyRoadsDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EasyRoadsDemoUITests.framework; path = "Pods-EasyRoadsDemoUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD3DDE50DDA751C43BBC2A98B136D018 /* ReachabilitySwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReachabilitySwift.xcconfig; sourceTree = "<group>"; };
+		E0263EAC78AB751AD0BDA16CCC4E7010 /* Pods_EasyRoadsDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EasyRoadsDemoUITests.framework; path = "Pods-EasyRoadsDemoUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E32592419A58362CB859FA4DBAE953CB /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
 		ECA7A4DB9320A53C3C1A61D9742687D7 /* Pods-EasyRoadsDemoUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EasyRoadsDemoUITests-frameworks.sh"; sourceTree = "<group>"; };
+		F2AF9EC704AAD470CAC8FE0D05A5430B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		FAC2DEF9D22E8F07A5969873AB639C81 /* Pods-EasyRoadsDemoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EasyRoadsDemoTests-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5354152F237F8171A532529D35A1893F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7D485BAE6CC23A674102C0C147A3E49 /* Foundation.framework in Frameworks */,
+				F46B3253DB15EDA0AB2B769E0ADE5C2D /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58B839E30995815D9F4D18BC34EDF5A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A11BE1B81D329C45F33550E5982336F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7EC987BBB6E240AFD58A42828FE4ECC8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3D050054B84F66F7AE81497A9077CC88 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F08DC80E7BD4E48448117E1E57E184F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8848F7ED077E4EFC80E4C54ED0ED3A0B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,32 +123,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */ = {
+		04F1E560826C468527027AA9C97027D4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				475420FA59EFC8377CF994A338979247 /* Frameworks */,
-				09DB508F39D8BE758EA4A7B9047268E9 /* Resources */,
+				2FA901E1D47F6299EFCCD509CEFBB8B9 /* Frameworks */,
 			);
-			name = GooglePlaces;
-			path = GooglePlaces;
+			name = Base;
 			sourceTree = "<group>";
 		};
-		09DB508F39D8BE758EA4A7B9047268E9 /* Resources */ = {
+		06DDD38AA702295A6CFF334A0C3ECF7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A65ED65616C5861E2765BDC60AAAF910 /* GooglePlaces.bundle */,
+				9567E78C8902E41D7B1F7A20F9F405DA /* GoogleMaps.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */ = {
+		0B150DC46E4905CCCC85C0A750A5BF03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B2F22323EA3B1ADB4F96376E3F709A68 /* Base */,
-				488E301C4ACDDA928635C4886F5F6158 /* Maps */,
+				6A093B15ED07E0173EB89BFEAC3D6FD7 /* Pods_EasyRoadsDemo.framework */,
+				7405458FA3F19339BE8D3D02FB3C4032 /* Pods_EasyRoadsDemoTests.framework */,
+				E0263EAC78AB751AD0BDA16CCC4E7010 /* Pods_EasyRoadsDemoUITests.framework */,
+				4B5A97C8160E43D12A91F931CC33E744 /* Reachability.framework */,
 			);
-			name = GoogleMaps;
-			path = GoogleMaps;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		269FE6E3C344D6DD0071742896364D0B /* ReachabilitySwift */ = {
+			isa = PBXGroup;
+			children = (
+				694FAD68DDA34BDCFEDFD21B6A3F0983 /* Reachability.swift */,
+				30698A931F2BC588FD1096913F8C7E7E /* Support Files */,
+			);
+			name = ReachabilitySwift;
+			path = ReachabilitySwift;
+			sourceTree = "<group>";
+		};
+		2FA901E1D47F6299EFCCD509CEFBB8B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31AE1069CBE94C74F72C515366A0FD41 /* GoogleMapsBase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		30698A931F2BC588FD1096913F8C7E7E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				198275D8AB612CA7B09FBA230A30191D /* Info.plist */,
+				B5201DA46DAFC7D4C3C2FE9A5399F124 /* ReachabilitySwift.modulemap */,
+				DD3DDE50DDA751C43BBC2A98B136D018 /* ReachabilitySwift.xcconfig */,
+				A907C1D55FAA7AA51DEF44BF2035AC5D /* ReachabilitySwift-dummy.m */,
+				1EF014B81BD4EBB4C2E20F2AE9F82809 /* ReachabilitySwift-prefix.pch */,
+				73F737471F0D1306D8DFE2F545237AD8 /* ReachabilitySwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ReachabilitySwift";
 			sourceTree = "<group>";
 		};
 		308DE196C0C50B0D749B1D250A25589E /* Targets Support Files */ = {
@@ -128,44 +192,26 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		343584E22C57489C672A8E6F731CB43A /* Resources */ = {
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1C6200385182862E9168588E60B1CD37 /* GoogleMaps.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		385FA015FFB9210F372AB1078B856AAB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */,
-				00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		475420FA59EFC8377CF994A338979247 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */,
+				E7E283C74B7E79D37D9BAAFF277942F5 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		488E301C4ACDDA928635C4886F5F6158 /* Maps */ = {
+		53F2C1792E079AE695C3CAFD796D2221 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */,
-				343584E22C57489C672A8E6F731CB43A /* Resources */,
+				E32592419A58362CB859FA4DBAE953CB /* GooglePlaces.bundle */,
 			);
-			name = Maps;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */ = {
+		7451242F95F50DD56485CCD2E0E2751B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */,
+				2DC7A4EB2F1147DBD5A6BE8557A5B656 /* GooglePlaces.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -174,30 +220,11 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				385FA015FFB9210F372AB1078B856AAB /* Pods */,
-				84FA75752D51BBB913008641874821A3 /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				D11022895063140EC0CCDAFD6BEE45BB /* Pods */,
+				0B150DC46E4905CCCC85C0A750A5BF03 /* Products */,
 				308DE196C0C50B0D749B1D250A25589E /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */,
-				A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		84FA75752D51BBB913008641874821A3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E3B2353961F2F89DF8A17D7B0DC9665C /* Pods_EasyRoadsDemo.framework */,
-				00F97471410C807B92FDAA14FD75F48E /* Pods_EasyRoadsDemoTests.framework */,
-				E6AE2D3FFBA172EE49504B20DC41036E /* Pods_EasyRoadsDemoUITests.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8F7A8177679E918C5E6D3F5927B6C395 /* Pods-EasyRoadsDemoUITests */ = {
@@ -236,26 +263,59 @@
 			path = "Target Support Files/Pods-EasyRoadsDemo";
 			sourceTree = "<group>";
 		};
-		B2F22323EA3B1ADB4F96376E3F709A68 /* Base */ = {
+		A31A26094138A99A5799023418603AB2 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */,
+				E11BCA60FB3280FBCB8D24B1FAA508FD /* Frameworks */,
+				06DDD38AA702295A6CFF334A0C3ECF7D /* Resources */,
 			);
-			name = Base;
+			name = Maps;
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		BE00589B45758CDB4315C7919E2C63C7 /* GooglePlaces */ = {
 			isa = PBXGroup;
 			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				7451242F95F50DD56485CCD2E0E2751B /* Frameworks */,
+				53F2C1792E079AE695C3CAFD796D2221 /* Resources */,
+			);
+			name = GooglePlaces;
+			path = GooglePlaces;
+			sourceTree = "<group>";
+		};
+		D11022895063140EC0CCDAFD6BEE45BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D466AB5A36C79F87EFE9828FDA2364B6 /* GoogleMaps */,
+				BE00589B45758CDB4315C7919E2C63C7 /* GooglePlaces */,
+				269FE6E3C344D6DD0071742896364D0B /* ReachabilitySwift */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D466AB5A36C79F87EFE9828FDA2364B6 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				04F1E560826C468527027AA9C97027D4 /* Base */,
+				A31A26094138A99A5799023418603AB2 /* Maps */,
+			);
+			name = GoogleMaps;
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		E11BCA60FB3280FBCB8D24B1FAA508FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49A495EBD66E4A86AFB9EFD615D05672 /* GoogleMaps.framework */,
+				423A6FE698D618690BC1BC3819F9CCEE /* GoogleMapsCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+		E7E283C74B7E79D37D9BAAFF277942F5 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+				97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */,
+				F2AF9EC704AAD470CAC8FE0D05A5430B /* SystemConfiguration.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -281,11 +341,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1BA936E6A617906755FF7407594C4635 /* Headers */ = {
+		50272FAC062F8818D5D2B556F5EC2593 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEDCB93709781DD95F32BE106CF241C5 /* Pods-EasyRoadsDemo-umbrella.h in Headers */,
+				5C37338F504F095DACA5F6C4B26FC5AF /* ReachabilitySwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,9 +365,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF6D74A3784A9B0331F3F418584070B6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				727DB72BB89635DBD0D53EE7775DA1D9 /* Pods-EasyRoadsDemo-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1328BA617DAE879C342E6E400A1FB7B6 /* ReachabilitySwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 083E2E83F4AFC8428EF4A8F72D5408A2 /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */;
+			buildPhases = (
+				0DE35766F7F437C63B03F48B0C34177B /* Sources */,
+				5354152F237F8171A532529D35A1893F /* Frameworks */,
+				50272FAC062F8818D5D2B556F5EC2593 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReachabilitySwift;
+			productName = ReachabilitySwift;
+			productReference = 4B5A97C8160E43D12A91F931CC33E744 /* Reachability.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		347BF8519846D18AA3E5D2282A7165AE /* Pods-EasyRoadsDemoTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78E6D5434F6C0A7106A1892747AD137D /* Build configuration list for PBXNativeTarget "Pods-EasyRoadsDemoTests" */;
@@ -322,24 +407,25 @@
 			);
 			name = "Pods-EasyRoadsDemoTests";
 			productName = "Pods-EasyRoadsDemoTests";
-			productReference = 00F97471410C807B92FDAA14FD75F48E /* Pods_EasyRoadsDemoTests.framework */;
+			productReference = 7405458FA3F19339BE8D3D02FB3C4032 /* Pods_EasyRoadsDemoTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7EBAEDC29D881FDCE591A57D94FD9A44 /* Pods-EasyRoadsDemo */ = {
+		A78EC2E2D9664D4E7AF33FA0576ADBFF /* Pods-EasyRoadsDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1649731D7DB933446EC0C5E04A17C1E3 /* Build configuration list for PBXNativeTarget "Pods-EasyRoadsDemo" */;
+			buildConfigurationList = 1B6C198562A5EED432EF74562741B334 /* Build configuration list for PBXNativeTarget "Pods-EasyRoadsDemo" */;
 			buildPhases = (
-				163C1DE42760ECE17D96563ED0949AE0 /* Sources */,
-				7F08DC80E7BD4E48448117E1E57E184F /* Frameworks */,
-				1BA936E6A617906755FF7407594C4635 /* Headers */,
+				CE2F5BA6276958ED28349C9920E27D00 /* Sources */,
+				58B839E30995815D9F4D18BC34EDF5A7 /* Frameworks */,
+				CF6D74A3784A9B0331F3F418584070B6 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9F9B829BFCCD889DB7594B3ED3ED817B /* PBXTargetDependency */,
 			);
 			name = "Pods-EasyRoadsDemo";
 			productName = "Pods-EasyRoadsDemo";
-			productReference = E3B2353961F2F89DF8A17D7B0DC9665C /* Pods_EasyRoadsDemo.framework */;
+			productReference = 6A093B15ED07E0173EB89BFEAC3D6FD7 /* Pods_EasyRoadsDemo.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FA24AECE3EDDC863F64C09163E5D103C /* Pods-EasyRoadsDemoUITests */ = {
@@ -356,7 +442,7 @@
 			);
 			name = "Pods-EasyRoadsDemoUITests";
 			productName = "Pods-EasyRoadsDemoUITests";
-			productReference = E6AE2D3FFBA172EE49504B20DC41036E /* Pods_EasyRoadsDemoUITests.framework */;
+			productReference = E0263EAC78AB751AD0BDA16CCC4E7010 /* Pods_EasyRoadsDemoUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -376,23 +462,25 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 84FA75752D51BBB913008641874821A3 /* Products */;
+			productRefGroup = 0B150DC46E4905CCCC85C0A750A5BF03 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7EBAEDC29D881FDCE591A57D94FD9A44 /* Pods-EasyRoadsDemo */,
+				A78EC2E2D9664D4E7AF33FA0576ADBFF /* Pods-EasyRoadsDemo */,
 				347BF8519846D18AA3E5D2282A7165AE /* Pods-EasyRoadsDemoTests */,
 				FA24AECE3EDDC863F64C09163E5D103C /* Pods-EasyRoadsDemoUITests */,
+				1328BA617DAE879C342E6E400A1FB7B6 /* ReachabilitySwift */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		163C1DE42760ECE17D96563ED0949AE0 /* Sources */ = {
+		0DE35766F7F437C63B03F48B0C34177B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D15924D214B4DED4FAD8F0BD6625B86 /* Pods-EasyRoadsDemo-dummy.m in Sources */,
+				2D3F7940C3CCD6007F56DFD31010920E /* Reachability.swift in Sources */,
+				31B17070DFE839F60B8942C2E1396960 /* ReachabilitySwift-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +500,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE2F5BA6276958ED28349C9920E27D00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				267B28FEF0DFC4A4164EC6B192ED94C9 /* Pods-EasyRoadsDemo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9F9B829BFCCD889DB7594B3ED3ED817B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReachabilitySwift;
+			target = 1328BA617DAE879C342E6E400A1FB7B6 /* ReachabilitySwift */;
+			targetProxy = AF88B09AA9D529A09F5F725F9AD08304 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0B0C15A2042DB0B3F1C457ED34135527 /* Debug */ = {
@@ -447,9 +552,9 @@
 			};
 			name = Debug;
 		};
-		1A7182B3A5EC1A968C8B2DFAD0A043FC /* Debug */ = {
+		219698460F0656D5CA3FB6BDA6CAE8DD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 611CC32273C65EEC6DECAAA35121A353 /* Pods-EasyRoadsDemo.debug.xcconfig */;
+			baseConfigurationReference = C965319B28E19D8CF4A536E71BCCAC13 /* Pods-EasyRoadsDemo.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -473,11 +578,13 @@
 				PRODUCT_NAME = Pods_EasyRoadsDemo;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		40A33EB31B592BF1A94239A0A0A01DA1 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -567,6 +674,40 @@
 			};
 			name = Release;
 		};
+		88E2FB8AD0D6AB2E8D8EE8743D10F011 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 611CC32273C65EEC6DECAAA35121A353 /* Pods-EasyRoadsDemo.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-EasyRoadsDemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EasyRoadsDemo/Pods-EasyRoadsDemo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_EasyRoadsDemo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		9CBFF4BF47FF4C76CC0D20ACEC6133BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B67BBC30F20D9AD2B1F16EED4F2B962E /* Pods-EasyRoadsDemoTests.release.xcconfig */;
@@ -593,6 +734,69 @@
 				PRODUCT_NAME = Pods_EasyRoadsDemoTests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9D1EE6DEC24DB0B8D03435B4D8ED5669 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD3DDE50DDA751C43BBC2A98B136D018 /* ReachabilitySwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
+				PRODUCT_NAME = Reachability;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A479F5A1B164200B6592FBB633CD64DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD3DDE50DDA751C43BBC2A98B136D018 /* ReachabilitySwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
+				PRODUCT_NAME = Reachability;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -660,39 +864,6 @@
 			};
 			name = Debug;
 		};
-		DF50A9D4CDA59FF3F26351960515F201 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C965319B28E19D8CF4A536E71BCCAC13 /* Pods-EasyRoadsDemo.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-EasyRoadsDemo/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-EasyRoadsDemo/Pods-EasyRoadsDemo.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_EasyRoadsDemo;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		EF9C4943A091FAB8F37C60128DF34034 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47C9374911C520E5CF4938C3E45E1215 /* Pods-EasyRoadsDemoUITests.debug.xcconfig */;
@@ -728,11 +899,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1649731D7DB933446EC0C5E04A17C1E3 /* Build configuration list for PBXNativeTarget "Pods-EasyRoadsDemo" */ = {
+		083E2E83F4AFC8428EF4A8F72D5408A2 /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A7182B3A5EC1A968C8B2DFAD0A043FC /* Debug */,
-				DF50A9D4CDA59FF3F26351960515F201 /* Release */,
+				9D1EE6DEC24DB0B8D03435B4D8ED5669 /* Debug */,
+				A479F5A1B164200B6592FBB633CD64DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B6C198562A5EED432EF74562741B334 /* Build configuration list for PBXNativeTarget "Pods-EasyRoadsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88E2FB8AD0D6AB2E8D8EE8743D10F011 /* Debug */,
+				219698460F0656D5CA3FB6BDA6CAE8DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,6 +9,7 @@ target 'EasyRoadsDemo' do
   # Pods for EasyRoadsDemo
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'ReachabilitySwift', '~> 4.1'
 
   target 'EasyRoadsDemoTests' do
     inherit! :search_paths

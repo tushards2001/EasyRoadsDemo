@@ -14,16 +14,23 @@ public enum SliderState: String {
     case SliderStateClosed
 }
 
+enum OptimizationState: String {
+    case show
+    case dontShow
+}
+
 protocol SearchViewDelegate: class {
     func sliderTapped(sender: SearchView, state: SliderState)
     func searchBarTextChanged(sender: SearchView, searchString: String)
     func predictionSelected(sender: SearchView, prediction: GMSAutocompletePrediction)
     func clearMap(sender: SearchView)
+    func optimizeRoutes(sender: SearchView, optimization: OptimizationState)
 }
 
 class SearchView: UIView {
     
     var state: SliderState = SliderState.SliderStateClosed
+    var optimizedState = OptimizationState.dontShow
     
     var predictions = [GMSAutocompletePrediction]()
     
@@ -39,14 +46,23 @@ class SearchView: UIView {
         return button
     }()
     
+    let optimizeButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(named: "icon_unchecked")
+        button.setImage(image, for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 10)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.setTitle("Optimize", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     let clearAllButton: UIButton = {
         let button = UIButton()
         button.setTitle("Clear All", for: .normal)
         button.setTitleColor(UIColor(white: 1.0, alpha: 0.5), for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.layer.cornerRadius = 3
-        button.layer.borderColor = UIColor(white: 1.0, alpha: 0.5).cgColor
-        button.layer.borderWidth = 1
+        button.titleLabel?.textAlignment = .right
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -54,7 +70,6 @@ class SearchView: UIView {
     let searchPanel: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 43.0/255.0, green: 107.0/255.0, blue: 132.0/255.0, alpha: 0.75)
-        //view.isUserInteractionEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -66,13 +81,10 @@ class SearchView: UIView {
         textField.layer.cornerRadius = 5
         textField.layer.borderColor = UIColor.white.cgColor
         textField.layer.borderWidth = 1
-        textField.textColor = UIColor(white: 1.0, alpha: 1)
+        textField.textColor = UIColor.white
         textField.placeholder = "Search Place..."
         textField.isUserInteractionEnabled = true
-        //textField.isExclusiveTouch = true
-        //textField.allowsEditingTextAttributes = true
         textField.clearButtonMode = UITextFieldViewMode.always
-        //textField.clearsOnBeginEditing = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -99,15 +111,15 @@ class SearchView: UIView {
     }
     
     func setupViews() {
+        
+        // slider button
         addSubview(sliderButton)
         sliderButton.addTarget(self, action: #selector(self.silderButtonTapped), for: .touchUpInside)
         sliderButton.roundCorners([.topLeft, .bottomLeft], radius: 15)
         
         
+        // search panel
         addSubview(searchPanel)
-        
-        
-        
         
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0(60)][v1]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": sliderButton, "v1": searchPanel]))
         
@@ -117,7 +129,7 @@ class SearchView: UIView {
         
         
         
-        
+        // search bar
         addSubview(searchBar)
         searchBar.delegate = self
         searchBar.setLeftPaddingPoints(10)
@@ -127,25 +139,31 @@ class SearchView: UIView {
         searchBar.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         searchBar.addTarget(self, action: #selector(textFieldDidTap(_:)), for: .touchUpInside)
         
-        
-        // search bar
+        // constraints
         searchBar.leftAnchor.constraint(equalTo: self.searchPanel.leftAnchor, constant: 16).isActive = true
         searchBar.topAnchor.constraint(equalTo: self.searchPanel.topAnchor, constant: 16).isActive = true
         searchBar.rightAnchor.constraint(equalTo: self.searchPanel.rightAnchor, constant: -16).isActive = true
         searchBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        //self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0(40)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": searchBar]))
         
-        //self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": searchBar]))
+        
         
         
         // clear button
-        
         addSubview(clearAllButton)
         clearAllButton.addTarget(self, action: #selector(clearAllButtonTapped(_:)), for: .touchUpInside)
-        clearAllButton.centerXAnchor.constraint(equalTo: self.searchPanel.centerXAnchor).isActive = true
-        clearAllButton.bottomAnchor.constraint(equalTo: self.searchPanel.bottomAnchor, constant: -16).isActive = true
-        clearAllButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        clearAllButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        clearAllButton.rightAnchor.constraint(equalTo: self.searchPanel.rightAnchor, constant: -8).isActive = true
+        clearAllButton.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor, constant: 8).isActive = true
+        clearAllButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        clearAllButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        
+        
+        // optimize button
+        addSubview(optimizeButton)
+        optimizeButton.addTarget(self, action: #selector(toggleOptimizeState(_:)), for: .touchUpInside)
+        optimizeButton.leftAnchor.constraint(equalTo: self.searchPanel.leftAnchor, constant: 16).isActive = true
+        optimizeButton.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor, constant: 8).isActive = true
+        optimizeButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        optimizeButton.rightAnchor.constraint(equalTo: self.clearAllButton.leftAnchor, constant: -8).isActive = true
         
         
         // placesTableView
@@ -158,10 +176,20 @@ class SearchView: UIView {
         placesTableView.reloadData()
         
         placesTableView.leftAnchor.constraint(equalTo: self.searchPanel.leftAnchor, constant: 8).isActive = true
-        placesTableView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor, constant: 16).isActive = true
+        placesTableView.topAnchor.constraint(equalTo: self.clearAllButton.bottomAnchor, constant: 16).isActive = true
         placesTableView.rightAnchor.constraint(equalTo: self.searchPanel.rightAnchor, constant: -8).isActive = true
-        placesTableView.bottomAnchor.constraint(equalTo: self.clearAllButton.topAnchor, constant: -16).isActive = true
+        placesTableView.bottomAnchor.constraint(equalTo: self.searchPanel.bottomAnchor, constant: 0).isActive = true
         
+    }
+    
+    @objc func toggleOptimizeState(_ sender: UIButton) {
+        if optimizedState == OptimizationState.show {
+            optimizedState = OptimizationState.dontShow
+            optimizeButton.setImage(UIImage(named: "icon_unchecked"), for: .normal)
+        } else {
+            optimizedState = OptimizationState.show
+            optimizeButton.setImage(UIImage(named: "icon_checked"), for: .normal)
+        }
     }
     
     @objc func clearAllButtonTapped(_ sender: UIButton) {
@@ -191,11 +219,9 @@ class SearchView: UIView {
             self.searchBar.text = ""
             self.predictions.removeAll()
             self.placesTableView.reloadData()
-            //searchBar.becomeFirstResponder()
         } else {
             delegate?.sliderTapped(sender: self, state: SliderState.SliderStateClosed)
             self.sliderButton.setImage(UIImage(named: "icon_search"), for: .normal)
-            //searchBar.resignFirstResponder()
         }
         
     }

@@ -216,25 +216,44 @@ class MapViewController: UIViewController {
         
         
         // show driving directions
-        showDirections()
+        if locations.count > 1 {
+            //showDirections(optimization: searchView.optimizedState)
+            showDirections(optimization: OptimizationState.dontShow)
+        }
+        
     }
     
-    func showDirections() {
+    func showDirections(optimization: OptimizationState) {
         
-        for i in 0..<locations.count {
+        if optimization == OptimizationState.show {
             
-            if (i+1) < locations.count {
-                let originlocation = locations[i]
-                let destinationLocation = locations[i+1]
+            if let originlocation = locations.first, let destinationLocation = locations.last {
                 
                 let origin = "\(originlocation.placeLocation.coordinate.latitude),\(originlocation.placeLocation.coordinate.longitude)"
-                let destination = "\(destinationLocation.placeLocation.coordinate.latitude),\(destinationLocation.placeLocation.coordinate.longitude)"
-                //let optimizeString = "optimize:true|\(origin)|\(destination)"
                 
-                let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&alternatives=false"
+                let destination = "\(destinationLocation.placeLocation.coordinate.latitude),\(destinationLocation.placeLocation.coordinate.longitude)"
+                
+                var waypointString = "waypoints=optimize:true"
+                
+                for i in 0..<locations.count {
+                    if let location = locations[i] as? Location {
+                        waypointString.append("|\(location.placeLocation.coordinate.latitude),\(location.placeLocation.coordinate.longitude)")
+                    }
+                }
+                
+                
+                var urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&alternatives=false&\(waypointString)&key=AIzaSyCkU0sahc_2l7Viy9dlQDxwkOkDnt24OMk"
                 print("\n\(urlString)\n")
                 
-                guard let url = URL(string: urlString) else {
+                
+                let allowedCharacterSet = (CharacterSet(charactersIn: "|").inverted)
+                
+                guard let escapedString = urlString.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)  else {
+                    return
+                }
+
+                
+                guard let url = URL(string: escapedString) else {
                     print("Error: Cannot create URL")
                     return
                 }
@@ -249,7 +268,7 @@ class MapViewController: UIViewController {
                         print("Error: \(error!)")
                     } else {
                         do {
-                            //let json = try JSONSerialization.data(withJSONObject: data, options: []) as? NSDictionary
+                            
                             let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary
                             let routes = json!["routes"] as! [[String: Any]]
                             
@@ -274,9 +293,72 @@ class MapViewController: UIViewController {
                 })
                 
                 task.resume()
+                
+            } else {
+                return
+            }
+            
+        } else {
+            
+            for i in 0..<locations.count {
+                
+                if (i+1) < locations.count {
+                    let originlocation = locations[i]
+                    let destinationLocation = locations[i+1]
+                    
+                    let origin = "\(originlocation.placeLocation.coordinate.latitude),\(originlocation.placeLocation.coordinate.longitude)"
+                    let destination = "\(destinationLocation.placeLocation.coordinate.latitude),\(destinationLocation.placeLocation.coordinate.longitude)"
+                    //let optimizeString = "optimize:true|\(origin)|\(destination)"
+                    
+                    let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&alternatives=false"
+                    print("\n\(urlString)\n")
+                    
+                    guard let url = URL(string: urlString) else {
+                        print("Error: Cannot create URL")
+                        return
+                    }
+                    
+                    let urlRequest = URLRequest(url: url)
+                    let config = URLSessionConfiguration.default
+                    let session = URLSession(configuration: config)
+                    
+                    let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+                        
+                        if error != nil {
+                            print("Error: \(error!)")
+                        } else {
+                            do {
+                                
+                                let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary
+                                let routes = json!["routes"] as! [[String: Any]]
+                                
+                                for route in routes {
+                                    let routeOverviewPolyline = route["overview_polyline"] as! [String: Any]
+                                    let points = routeOverviewPolyline["points"] as! String
+                                    let path = GMSPath.init(fromEncodedPath: points)
+                                    
+                                    let polyline = GMSPolyline.init(path: path)
+                                    polyline.strokeWidth = 4
+                                    polyline.strokeColor = UIColor.rgb(red: 0, green: 179, blue: 253)
+                                    polyline.map = self.googleMapView
+                                    
+                                    self.polyLines.append(polyline)
+                                    //destinationLocation.polyLine = polyline
+                                }
+                            } catch let err {
+                                print("JSON Error: \(err)")
+                            }
+                        }
+                        
+                    })
+                    
+                    task.resume()
+                }
             }
             
         }
+        
+        
         
     }
     
@@ -328,7 +410,11 @@ extension MapViewController: GMSMapViewDelegate {
                 locations.remove(at: index)
                 //self.googleMapView.clear()
                 
-                self.showDirections()
+                if locations.count > 1 {
+                    //self.showDirections(optimization: searchView.optimizedState)
+                    self.showDirections(optimization: OptimizationState.dontShow)
+                }
+                
             }
         }
         
@@ -356,6 +442,16 @@ extension MapViewController: SearchViewDelegate {
         
         // to close the slider
         self.sliderTapped(sender: sender, state: SliderState.SliderStateClosed)
+    }
+    
+    func optimizeRoutes(sender: SearchView, optimization: OptimizationState) {
+        
+        if locations.count > 1 {
+            //showDirections(optimization: optimization)
+            showDirections(optimization: OptimizationState.dontShow)
+        }
+        
+        
     }
     
     

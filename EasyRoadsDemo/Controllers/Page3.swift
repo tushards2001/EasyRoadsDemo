@@ -63,11 +63,6 @@ class Page3: UIViewController {
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        /*if !isLoacationServiceEnabled() {
-            locationManager = CLLocationManager()
-            locationManager.delegate = self
-            locationManager.requestAlwaysAuthorization()
-        }*/
     }
     
     func isLoacationServiceEnabled() -> Bool {

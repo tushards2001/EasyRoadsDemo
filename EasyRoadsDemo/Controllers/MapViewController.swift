@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
     var currentLocationDetected: Bool = false
     
     var searchView: SearchView!
+    var placesView: PlacesView!
     
     var googleMapView: GMSMapView!
     //var cameraPosition = GMSCameraPosition()
@@ -108,6 +109,8 @@ class MapViewController: UIViewController {
         
         setupSearchView()
         
+        setupPlacesView()
+        
         // reachability notifier
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(notification:)), name: .reachabilityChanged, object: nil)
         
@@ -167,6 +170,7 @@ class MapViewController: UIViewController {
         
         let location = Location(withLocation: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude), mapMarker: marker)
         locations.append(location)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -199,6 +203,16 @@ class MapViewController: UIViewController {
         
     }
     
+    func setupPlacesView() {
+        placesView = PlacesView(frame: CGRect(x: (UIScreen.main.bounds.width - (60 + 8)) * -1, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height))
+        
+        self.view.addSubview(placesView)
+        placesView.delegate = self
+        
+        
+        placesView.locations = locations
+    }
+    
     func putDestinationMarker(coordinates: CLLocationCoordinate2D, placeName: String) {
         print("Place = \(placeName)")
         print("Latitude = \(coordinates.latitude) | Longitude = \(coordinates.longitude)")
@@ -222,6 +236,7 @@ class MapViewController: UIViewController {
         let location = Location(withLocation: CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude), mapMarker: marker)
         locations.append(location)
         
+        placesView.locations = locations
         
         // show driving directions
         if locations.count > 1 {
@@ -385,6 +400,8 @@ class MapViewController: UIViewController {
 
 }
 
+// MARK:- GMSMapView Delegate
+
 extension MapViewController: GMSMapViewDelegate {
     
     /*func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
@@ -404,7 +421,7 @@ extension MapViewController: GMSMapViewDelegate {
             
             tappedMarker = marker
             
-            customMarkerInfoWindow = CustomMarkerInfoWindow(frame: CGRect(x: 0, y: 0, width: 200, height: 110), marker: marker, title: "Current Location")
+            customMarkerInfoWindow = CustomMarkerInfoWindow(frame: CGRect(x: 0, y: 0, width: 200, height: 110), marker: marker, title: marker.title!)
             self.view.addSubview(customMarkerInfoWindow)
             customMarkerInfoWindow.delegate = self
             
@@ -468,6 +485,9 @@ extension MapViewController: GMSMapViewDelegate {
     }    
 }
 
+
+// MARK:- CustomMarkerInfoWindow Delegate
+
 extension MapViewController: CustomMarkerInfoWindowDelegate {
     
     func removeMarkerInfoWindow(_ sender: CustomMarkerInfoWindow, marker: GMSMarker) {
@@ -504,6 +524,9 @@ extension MapViewController: CustomMarkerInfoWindowDelegate {
             locations.remove(at: index)
             //self.googleMapView.clear()
             
+            
+            placesView.locations = locations
+            
             if locations.count > 1 {
                 //self.showDirections(optimization: searchView.optimizedState)
                 self.showDirections(optimization: OptimizationState.dontShow)
@@ -525,6 +548,8 @@ extension MapViewController: CustomMarkerInfoWindowDelegate {
     }
 }
 
+// MARK:- SearchView Delegate
+
 extension MapViewController: SearchViewDelegate {
     
     
@@ -532,6 +557,9 @@ extension MapViewController: SearchViewDelegate {
         self.locations.removeAll()
         self.googleMapView.clear()
         self.currentLocationDetected = false
+        
+        placesView.locations = locations
+        
         self.locationManager.startUpdatingLocation()
         
         // to close the slider
@@ -577,6 +605,8 @@ extension MapViewController: SearchViewDelegate {
         if state == SliderState.SliderStateOpened {
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.searchView.frame = CGRect(x: 10, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width - 10, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
+                
+                self.placesView.frame = CGRect(x: -UIScreen.main.bounds.width, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
             }, completion: { (finished) in
                 self.searchView.state = SliderState.SliderStateOpened
                 self.searchView.showKeyboard()
@@ -584,6 +614,8 @@ extension MapViewController: SearchViewDelegate {
         } else {
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.searchView.frame = CGRect(x: UIScreen.main.bounds.width - 60 - 8, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width - 10, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
+                
+                self.placesView.frame = CGRect(x: (UIScreen.main.bounds.width - (60 + 8)) * -1, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
             }, completion: { (finished) in
                 self.searchView.state = SliderState.SliderStateClosed
                 self.searchView.dismissKeyboard()
@@ -618,6 +650,84 @@ extension MapViewController: SearchViewDelegate {
     
     
 }
+
+// MARK:- PlacesView Delegate
+
+extension MapViewController: PlacesViewDelegate {
+    
+    func sliderTapped(sender: PlacesView, state: SliderState) {
+        if state == SliderState.SliderStateOpened {
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.placesView.frame = CGRect(x: 0, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
+                
+                self.searchView.frame = CGRect(x: UIScreen.main.bounds.width, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width - 10, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
+            }, completion: { (finished) in
+                self.placesView.state = SliderState.SliderStateOpened
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.placesView.frame = CGRect(x: (UIScreen.main.bounds.width - (60 + 8)) * -1, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
+                
+                self.searchView.frame = CGRect(x: UIScreen.main.bounds.width - 60 - 8, y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width - 10, height: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
+            }, completion: { (finished) in
+                self.placesView.state = SliderState.SliderStateClosed
+            })
+            
+        }
+    }
+    
+    func placeRemoved(sender: PlacesView, location: Location) {
+        
+        if let marker = location.marker {
+            
+            marker.map = nil
+            
+            var index: Int = -1
+            
+            for i in 0..<locations.count {
+                let location = locations[i]
+                if location.marker == marker {
+                    index = i
+                    //break
+                }
+                
+                if let polyLine = location.polyLine {
+                    polyLine.map = nil
+                }
+            }
+            
+            // remove all route drawings
+            for polyLine in polyLines {
+                polyLine.map = nil
+            }
+            
+            polyLines.removeAll()
+            
+            
+            
+            
+            // remove location from locations array
+            if index > -1 {
+                locations.remove(at: index)
+                //self.googleMapView.clear()
+                
+                
+                placesView.locations = locations
+                
+                if locations.count > 1 {
+                    //self.showDirections(optimization: searchView.optimizedState)
+                    self.showDirections(optimization: OptimizationState.dontShow)
+                }
+                
+            }
+            
+        }
+        
+    }
+  
+}
+
+// MARK:- CLLocationManager Delegate
 
 extension MapViewController: CLLocationManagerDelegate {
     

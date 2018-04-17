@@ -33,22 +33,20 @@ class MapViewController: UIViewController {
     
     // offline
     var offlineView: OfflineView!
+    
+    
+    // custom marker info window
+    var customMarkerInfoWindow: CustomMarkerInfoWindow!
+    var tappedMarker: GMSMarker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
-        
+
         initLocationManager()
         
-        //showCurrentLocationOnMap()
-        
-        
         setupStatusBar()
-        
-        
         
     }
     
@@ -135,7 +133,17 @@ class MapViewController: UIViewController {
     
     func showCurrentLocationOnMap() {
         
-        let cameraPosition = GMSCameraPosition.camera(withLatitude: (self.locationManager.location?.coordinate.latitude)!, longitude: (self.locationManager.location?.coordinate.longitude)!, zoom: 10.0)
+        var latitude = 19.2822056
+        var longituge = 72.8590269
+        
+        if let lat = self.locationManager.location?.coordinate.latitude, let long = self.locationManager.location?.coordinate.longitude {
+            latitude = lat
+            longituge = long
+        }
+        
+        
+        let cameraPosition = GMSCameraPosition.camera(withLatitude: latitude, longitude: longituge, zoom: 10.0)
+        //let cameraPosition = GMSCameraPosition.camera(withLatitude: (self.locationManager.location?.coordinate.latitude)!, longitude: (self.locationManager.location?.coordinate.longitude)!, zoom: 10.0)
         
         
         if googleMapView == nil {
@@ -218,7 +226,10 @@ class MapViewController: UIViewController {
         // show driving directions
         if locations.count > 1 {
             //showDirections(optimization: searchView.optimizedState)
-            showDirections(optimization: OptimizationState.dontShow)
+            
+            // UN-COMMENT AFTER TESTING
+            self.showDirections(optimization: OptimizationState.dontShow)
+            
         }
         
     }
@@ -273,6 +284,7 @@ class MapViewController: UIViewController {
                             let routes = json!["routes"] as! [[String: Any]]
                             
                             for route in routes {
+                                
                                 let routeOverviewPolyline = route["overview_polyline"] as! [String: Any]
                                 let points = routeOverviewPolyline["points"] as! String
                                 let path = GMSPath.init(fromEncodedPath: points)
@@ -283,6 +295,7 @@ class MapViewController: UIViewController {
                                 polyline.map = self.googleMapView
                                 
                                 self.polyLines.append(polyline)
+                                
                                 //destinationLocation.polyLine = polyline
                             }
                         } catch let err {
@@ -333,17 +346,21 @@ class MapViewController: UIViewController {
                                 let routes = json!["routes"] as! [[String: Any]]
                                 
                                 for route in routes {
-                                    let routeOverviewPolyline = route["overview_polyline"] as! [String: Any]
-                                    let points = routeOverviewPolyline["points"] as! String
-                                    let path = GMSPath.init(fromEncodedPath: points)
                                     
-                                    let polyline = GMSPolyline.init(path: path)
-                                    polyline.strokeWidth = 4
-                                    polyline.strokeColor = UIColor.rgb(red: 0, green: 179, blue: 253)
-                                    polyline.map = self.googleMapView
+                                    DispatchQueue.main.async {
+                                        let routeOverviewPolyline = route["overview_polyline"] as! [String: Any]
+                                        let points = routeOverviewPolyline["points"] as! String
+                                        let path = GMSPath.init(fromEncodedPath: points)
+                                        
+                                        let polyline = GMSPolyline.init(path: path)
+                                        polyline.strokeWidth = 4
+                                        polyline.strokeColor = UIColor.rgb(red: 0, green: 179, blue: 253)
+                                        polyline.map = self.googleMapView
+                                        
+                                        self.polyLines.append(polyline)
+                                        //destinationLocation.polyLine = polyline
+                                    }
                                     
-                                    self.polyLines.append(polyline)
-                                    //destinationLocation.polyLine = polyline
                                 }
                             } catch let err {
                                 print("JSON Error: \(err)")
@@ -378,7 +395,28 @@ extension MapViewController: GMSMapViewDelegate {
     }*/
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
         if marker.title != "Current Location" {
+            
+            if let customInfoWindow = customMarkerInfoWindow {
+                customInfoWindow.removeFromSuperview()
+            }
+            
+            tappedMarker = marker
+            
+            customMarkerInfoWindow = CustomMarkerInfoWindow(frame: CGRect(x: 0, y: 0, width: 200, height: 110), marker: marker, title: "Current Location")
+            self.view.addSubview(customMarkerInfoWindow)
+            customMarkerInfoWindow.delegate = self
+            
+            customMarkerInfoWindow.center = CGPoint(x: mapView.projection.point(for: marker.position).x, y: mapView.projection.point(for: marker.position).y - 80) //mapView.projection.point(for: marker.position)
+            
+        }
+        
+        
+        
+        
+
+        /*if marker.title != "Current Location" {
             marker.map = nil
             
             var index: Int = -1
@@ -416,19 +454,75 @@ extension MapViewController: GMSMapViewDelegate {
                 }
                 
             }
-        }
+        }*/
         
         return true
     }
     
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        if let marker = tappedMarker {
+            let newPoint = CGPoint(x: mapView.projection.point(for: marker.position).x, y: mapView.projection.point(for: marker.position).y - 80)
+            customMarkerInfoWindow.center = newPoint//mapView.projection.point(for: marker.position)
+        }
+    }    
 }
 
 extension MapViewController: CustomMarkerInfoWindowDelegate {
     
     func removeMarkerInfoWindow(_ sender: CustomMarkerInfoWindow, marker: GMSMarker) {
+        print("remove marker from map")
+        
         marker.map = nil
+        
+        var index: Int = -1
+        
+        for i in 0..<locations.count {
+            let location = locations[i]
+            if location.marker == marker {
+                index = i
+                //break
+            }
+            
+            if let polyLine = location.polyLine {
+                polyLine.map = nil
+            }
+        }
+        
+        // remove all route drawings
+        for polyLine in polyLines {
+            polyLine.map = nil
+        }
+        
+        polyLines.removeAll()
+        
+        
+        
+        
+        // remove location from locations array
+        if index > -1 {
+            locations.remove(at: index)
+            //self.googleMapView.clear()
+            
+            if locations.count > 1 {
+                //self.showDirections(optimization: searchView.optimizedState)
+                self.showDirections(optimization: OptimizationState.dontShow)
+            }
+            
+        }
+        
+        if let customInfoWindow = customMarkerInfoWindow {
+            customInfoWindow.removeFromSuperview()
+        }
     }
     
+    func closeMarkerInfoWindow(_ sender: CustomMarkerInfoWindow, marker: GMSMarker) {
+        print("close marker from map")
+        
+        if let customInfoWindow = customMarkerInfoWindow {
+            customInfoWindow.removeFromSuperview()
+        }
+    }
 }
 
 extension MapViewController: SearchViewDelegate {

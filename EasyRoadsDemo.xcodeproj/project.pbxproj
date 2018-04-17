@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		201F5C36F2D5DBE3D5E0E7A8 /* Pods_EasyRoadsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BCEBC5FA85C685EE043E8C /* Pods_EasyRoadsDemo.framework */; };
+		522E5CFB2085EA24000D85B8 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522E5CFA2085EA24000D85B8 /* TriangleView.swift */; };
 		523317712074D2DF00443C54 /* CustomMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523317702074D2DF00443C54 /* CustomMarkerInfoWindow.swift */; };
 		523317732074E3CC00443C54 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523317722074E3CC00443C54 /* Location.swift */; };
 		523317752074FA8A00443C54 /* FunFactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523317742074FA8A00443C54 /* FunFactsView.swift */; };
@@ -53,6 +54,7 @@
 		0B2283BB62891FEAB7A1D694 /* Pods-EasyRoadsDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRoadsDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyRoadsDemoTests/Pods-EasyRoadsDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49BCEBC5FA85C685EE043E8C /* Pods_EasyRoadsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyRoadsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE7E198E370610DE0B34CAA /* Pods-EasyRoadsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRoadsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyRoadsDemo/Pods-EasyRoadsDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		522E5CFA2085EA24000D85B8 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		523317702074D2DF00443C54 /* CustomMarkerInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerInfoWindow.swift; sourceTree = "<group>"; };
 		523317722074E3CC00443C54 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		523317742074FA8A00443C54 /* FunFactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunFactsView.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				523317742074FA8A00443C54 /* FunFactsView.swift */,
 				523317782075050A00443C54 /* FunFactTableViewCell.swift */,
 				52C0B3682075F6900020E0E1 /* OffilneView.swift */,
+				522E5CFA2085EA24000D85B8 /* TriangleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				523317792075050A00443C54 /* FunFactTableViewCell.swift in Sources */,
 				5233177C20750BF100443C54 /* Extensions.swift in Sources */,
 				52783A43207350A500813977 /* AppDelegate.swift in Sources */,
+				522E5CFB2085EA24000D85B8 /* TriangleView.swift in Sources */,
 				52C0B3692075F6900020E0E1 /* OffilneView.swift in Sources */,
 				523317772074FACB00443C54 /* FunFact.swift in Sources */,
 				52783A7C20735BC700813977 /* Page2.swift in Sources */,
